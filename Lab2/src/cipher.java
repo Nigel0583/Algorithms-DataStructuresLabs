@@ -3,7 +3,7 @@ public class cipher {
         String message = "This is a secret message";
         message = (encrypt(message, 5));
         System.out.println(message);
-        String message1 = decrypt(message);
+        String message1 = decrypt(message,5);
         System.out.println(message1);
     }
 
@@ -30,8 +30,7 @@ public class cipher {
                 sb.append(new StringBuilder("x"));
             }
         }
-        System.out.println(sb);
-        System.out.println(+sb.length());
+
 
         for (int i = 0; i < numColumns; i++) {
             int index = i;
@@ -42,20 +41,14 @@ public class cipher {
             }
             cipherText.append(" ");
         }
+        System.out.println(sb);
+        System.out.println(sb.length());
         return cipherText.toString();
     }
 
-    private static String decrypt(String plainText){
-        StringBuilder sb = new StringBuilder();
-        char ch;
-
-        for (int i=0; i< plainText.length(); i++){
-            ch = plainText.charAt(i);
-            if (ch != ' '){
-                sb.append(ch);
-            }
-        }
-        return sb.toString();
+    private static String decrypt(String cipherText,int numColumns){
+            int rows = (cipherText.length()/numColumns)-1;
+        return encrypt(cipherText, rows);
     }
 
 
